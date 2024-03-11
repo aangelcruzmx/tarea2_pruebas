@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class DiasLluviaTest {
 
@@ -28,4 +28,27 @@ class DiasLluviaTest {
         diasLluvia.registroDia(15, 4, true); // Asumiendo que este día ha sido registrado como lluvioso
         assertTrue(diasLluvia.consultarDia(15, 4), "El día consultado debe ser lluvioso");
     }
+    @Test
+    public void testContarDiasLluviosos() {
+        diasLluvia.registroDia(1, 1, true);
+        diasLluvia.registroDia(2, 1, true);
+        assertEquals( 2, diasLluvia.contarDiasLluviosos());
+    }
+
+    @Test
+    public void testTrimestreLluvioso() {
+        // se asume un conjunto de datos de prueba
+        diasLluvia.registroDia(10, 1, true);
+        diasLluvia.registroDia(20, 3, true);
+        diasLluvia.registroDia(5, 2, true);
+        // El primer trimestre es el maslluvioso en este caso
+        assertEquals( 1, diasLluvia.trimestreLluvioso());
+    }
+
+    @Test
+    public void testPrimerDiaLluvia() {
+        diasLluvia.registroDia(15, 4, true);
+        assertEquals( 105, diasLluvia.primerDiaLluvia());
+    }
+
 }
