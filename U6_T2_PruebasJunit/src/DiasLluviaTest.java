@@ -50,5 +50,24 @@ class DiasLluviaTest {
         diasLluvia.registroDia(15, 4, true);
         assertEquals( 105, diasLluvia.primerDiaLluvia());
     }
+    @Test
+    public void testPrimerDiaLluvia2() {
+        diasLluvia.registroDia(10, 3, true);
+        assertEquals(10 + (2 * 30), diasLluvia.primerDiaLluvia()); // El dia esperado es 10, en el tercer mes, por lo que (2*30) + 10
+    }
+
+    @Test
+    public void testRegistroDia() {
+        assertTrue(diasLluvia.registroDia(10, 5, true));
+        assertTrue(diasLluvia.getDiasLluviosos()[4][9]);
+    }
+    @Test
+    public void testConsultarDia() {
+        // Registrar un día como lluvioso y luego consultarlo
+        diasLluvia.registroDia(15, 6, true);
+        assertTrue(diasLluvia.consultarDia(15, 6));
+    }
+
+
 
 }
